@@ -1,35 +1,39 @@
-import { makeStyles } from '@material-ui/styles'
+import { makeStyles } from "@material-ui/styles";
+import { BrowserRouter as Router, Redirect, Route } from "react-router-dom";
+import NavBar from "./Components/NavBar";
+import Home from "./Pages/Home";
+import Projects from "./Pages/Projects";
+import About from "./Pages/About";
+import Contact from "./Pages/Contact";
 
-function App() {
-  const classes = styles();
+const App = () => {
+  const navItems = ["Home", "Projects", "About", "Contact"];
+  const classes = Main();
 
   return (
     <>
-      <div className={classes.container}>
-        <div className={classes.navBar}>
-          <div className={classes.items}>Home</div>
-          <div className={classes.items}>Projects</div>
-          <div className={classes.items}>About</div>
-          <div className={classes.items}>Contact</div>
+      <Router>
+        <div className={classes.background}>
+          <NavBar navItems={navItems} />
         </div>
-      </div>
+
+        <Redirect to="/Home" />
+        <Route exact path="/Home" component={Home} />
+        <Route exact path="/Projects" component={Projects} />
+        <Route exact path="/About" component={About} />
+        <Route exact path="/Contact" component={Contact} />
+      </Router>
     </>
   );
-}
+};
 
-const styles = makeStyles({
-  container: {
-    display: "flex",
-    justifyContent: "center"
+const Main = makeStyles({
+  background: {
+    position: "absolute",
+    minHeight: "100vh",
+    minWidth: "100vw",
+    backgroundColor: "#93acb5",
   },
-  navBar: {
-    display: "flex",
-    maxWidth: 600,
-    marginTop: "2em"
-  },
-  items: {
-    margin: "0 1em"
-  }
-})
+});
 
 export default App;
