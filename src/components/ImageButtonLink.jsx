@@ -1,6 +1,12 @@
 import { makeStyles } from "@material-ui/styles";
 
-const ImageButtonLink = ({ image, link, imgSize, isCentered }) => {
+const ImageButtonLink = ({
+  image,
+  link,
+  imgSize,
+  isCentered,
+  openNewPage = true,
+}) => {
   const classes = style({
     buttonSize: String(imgSize),
     imgSize: String(imgSize - 10),
@@ -8,7 +14,12 @@ const ImageButtonLink = ({ image, link, imgSize, isCentered }) => {
   })();
 
   return (
-    <a className={classes.button} href={link} target="_blank" rel="noreferrer">
+    <a
+      className={classes.button}
+      href={link}
+      target={openNewPage ? "_blank" : ""}
+      rel="noreferrer"
+    >
       <img className={classes.img} src={image} alt="" />
     </a>
   );

@@ -1,9 +1,19 @@
 import { makeStyles } from "@material-ui/styles";
-import githubImg from "../img/Github_light.png";
 import ScrollAnimation from "react-animate-on-scroll";
+
+import githubImg from "../img/Github_light.png";
+import unityLogoWhite from "../img/progressLogo.Dark.png";
+
 import ImageButtonLink from "./ImageButtonLink";
 
-const DescriptionBox = ({ title, description, link, chosen, enterf }) => {
+const DescriptionBox = ({
+  title,
+  description,
+  link,
+  route,
+  chosen,
+  enterf,
+}) => {
   const classes = style({
     opacity: chosen ? 1 : 0.5,
     open: chosen ? "visable" : "hidden",
@@ -16,7 +26,17 @@ const DescriptionBox = ({ title, description, link, chosen, enterf }) => {
           <h3>{title}</h3>
           <p className={classes.descriptionText}>{description}</p>
         </div>
-        <ImageButtonLink image={githubImg} link={link} imgSize={50} />
+        <div className={classes.buttonContainer}>
+          <ImageButtonLink image={githubImg} link={link} imgSize={50} />
+          {route != null ? (
+            <ImageButtonLink
+              image={unityLogoWhite}
+              link={route}
+              imgSize={50}
+              openNewPage={false}
+            />
+          ) : null}
+        </div>
       </div>
     </ScrollAnimation>
   );
@@ -37,6 +57,7 @@ const style = (props) =>
     },
     descriptionText: {
       color: "#545E6F",
+      whiteSpace: "pre-line",
     },
     boxContainer: {
       display: "flex",
@@ -60,6 +81,10 @@ const style = (props) =>
       minHeight: props.open === "visable" ? "180px" : "10em",
 
       overflow: props.open,
+    },
+    buttonContainer: {
+      display: "flex",
+      flexDirection: "column",
     },
   }));
 
