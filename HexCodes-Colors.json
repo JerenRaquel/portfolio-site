@@ -3,5 +3,12 @@
   "Dark Jungle Green": "#071108",
   "Black Shadows": "#bfb1c1",
   "Silver Sand": "#b5bec6",
-  "Beau Blue": "#c7dbe6"
+  "Beau Blue": "#c7dbe6",
+  "Pewter Blue": "#93acb5",
+  "Baby Blue Eyes": [
+    "#96c5f7",
+    "#a9d3ff"
+  ],
+  "Ghost White": "#f2f4ff"
+
 }
